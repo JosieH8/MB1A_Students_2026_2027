@@ -1,0 +1,51 @@
+---
+title: "Practical 1 Vectors, data frames and plots"
+---
+
+## Quarto
+
+```{r}
+library(fortunes)
+library(tidyverse)
+library(gt)
+```
+creating a new vector and isolating a value 
+
+```{r}
+all_my_pets <- c("dog","horse","guinea pig", "chicken", "cat")
+print(all_my_pets[4])
+```
+producing a table with a data frame 
+
+```{r}
+my_data_frame <- tibble(
+  cell_ID = c("CX1", "CX2"),
+  treated = c("true", "false"),
+  num_cells_before = c(5415, 8123),
+  num_cells_after = c(1432, 7543)
+)
+
+gt(my_data_frame)
+
+```
+
+
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this 
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).

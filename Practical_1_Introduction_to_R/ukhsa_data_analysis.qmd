@@ -1,0 +1,49 @@
+---
+title: "Practical_1_Introduction_to_R/ukhsa_data_analysis"
+---
+```{r}
+library(tidyverse)
+library(gt)
+
+rhinovirus <- read_csv("data/ukhsa-chart-download-rhinovirus.csv")
+
+gt(head(rhinovirus))
+
+```
+I selected the rhinovirus data set and used head() and gt() to view the first 10 rows of the table from the csv format.
+
+starting a plot:
+
+```{r}
+ggplot(rhinovirus, aes(
+  x = date,
+  y = metric_value
+  )) +
+  geom_line(color = "red") +
+  xlab("Date") +
+  ylab("Percentage") +
+  ggtitle("Percentage of positive PCR test results for rhinovirus")
+
+```
+
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this 
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
