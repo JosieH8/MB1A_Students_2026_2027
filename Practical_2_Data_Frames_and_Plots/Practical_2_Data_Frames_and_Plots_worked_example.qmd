@@ -1,0 +1,84 @@
+---
+title: "Practical_2_Data_Frames_and_Plots/worked_example"
+---
+worked example
+```{r}
+library(gt)
+library(tidyverse)
+library(maps)
+
+bird_breeding_sites <- read_csv("data/breeding_site_locations.csv")
+gt(bird_breeding_sites)
+```
+column names of breeding site data: 
+```{r}
+colnames(bird_breeding_sites)
+```
+focusing on Site, Longitude, and Latitude
+
+data frame summary:
+```{r}
+glimpse(bird_breeding_sites)
+```
+```{r}
+bird_migration_sites <- read_csv("data/migratory_connectivity_dataset.csv")
+gt(head(bird_migration_s))
+```
+this shows the first 10 rows of the data
+
+examining the data: 
+```{r}
+glimpse(bird_migration_sites)
+```
+```{r}
+colnames(bird_migration_sites)
+```
+joining my data frames
+```{r}
+combined_bird_data <- full_join(bird_breeding_exc, bird_migration_summary)
+
+gt(combined_bird_data)
+```
+
+
+converting to long format 
+```{r}
+combined_bird_piv <- combined_bird_data |>
+  pivot_longer(
+    cols = ends_with(c("_Longitude", "_Latitude")),
+    names_sep = "_",
+    names_to = c("Location_Type", ".value")
+  )
+
+gt(combined_bird_piv)
+```
+
+
+focusing on: site, winterLongitude, winterLatitude, pslon, pslat, iblon, iblat, awestlon, awestlat
+
+
+picked up:
+new data frames
+```{r}
+```
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this 
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
